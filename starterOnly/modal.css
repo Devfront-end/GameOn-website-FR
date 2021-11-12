@@ -68,6 +68,8 @@ img {
   display: none;
 }
 
+
+
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -527,3 +529,7 @@ footer {
   }
 }
 
+@media screen and (max-width:375px) {
+  .topnav a.icon {
+    margin-top: auto;
+}
