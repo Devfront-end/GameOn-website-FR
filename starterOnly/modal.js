@@ -43,7 +43,7 @@ elt.addEventListener('click', function (event) {
 	const prenomError = prenom.nextElementSibling;
 	const regExPrenom = /^[a-zA-Z-\u00C0-\u024F]{2,}$/;
 	if (!regExPrenom.test(prenom.value)) {
-		prenomError.textContent = "le prenom n'est pas valide";
+		prenomError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
 		//prenomError.style.display = 'block';
 		// display block
 		prenomError.classList.add('error');
@@ -59,7 +59,7 @@ elt.addEventListener('click', function (event) {
 	const nomError = nom.nextElementSibling;
 	const regExNom = /^[a-zA-Z-À-ÖØ-öø-ÿ]{2,}$/;
 	if (!regExNom.test(nom.value)) {
-		nomError.textContent = "le nom n'est pas valide";
+		nomError.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
 		nomError.classList.add('error');
 	} else {
 		nomError.classList.remove('error');
@@ -80,25 +80,20 @@ elt.addEventListener('click', function (event) {
 
 	// ^([0-9]{4})-((0)[0-9]|(1)[0-2])-([0-2][0-9]|(3)[0-1])$
 	// "Vous devez entrer votre date de naissance."
-	const birthdate = document.getElementById('birthdate');
-	const birthdateError = birthdate.nextElementSibling;
-	const regExBirthdate = /^([0-9]{4})-((0)[0-9]|(1)[0-2])-([0-2][0-9]|(3)[0-1])$/;
+	function checkAge() {
+		const ageInput = document.getElementById('birthdate').value;
+		const regExAge = /(19\d\d|20[0-3])(-\d\d){2}/;
+		const $ageErrorMsg = document.querySelector('.ageErrorMsg');
+		const isAgeValid = regExAge.test(ageInput);
+	  
+		if (isAgeValid) {
+		  $ageErrorMsg.classList.add('hidden');
+		} else {
+		  $ageErrorMsg.classList.remove('hidden')
+		}
+		return isAgeValid
+	  }
 	
-	//console.log(new Date(dateDujour) + (birthdate.value));
-	console.log(birthdate.value);
-	console.log(sameAgeOrOlder(18, new Date(birthdate.value)));
-	console.log(!regExBirthdate.test(birthdate.value));
-	if (regExBirthdate.test(birthdate.value) && (!sameAgeOrOlder(18, new Date(birthdate.value)))) {
-		birthdateError.textContent = 'Vous devez avoir au moins 18 ans !';
-		birthdateError.classList.add('error');
-
-	} else {
-		birthdateError.classList.remove('error');
-		birthdateError.textContent = '';
-	}
-
-
-
 	// Pour le nombre de concours, une valeur numérique est saisie.
 	const quantity = document.getElementById('quantity');
 	const quantityError = quantity.nextElementSibling;
@@ -113,118 +108,108 @@ elt.addEventListener('click', function (event) {
 	}
 
 	// Un bouton radio est sélectionné.
+
+	const locationError = document.getElementById('locationError');
+	if (!document.querySelector('input[name="location"]:checked')) {
+		locationError.textContent = 'Vous devez choisir une ville';
+		locationError.classList.add('error');
+	} else {
+		locationError.classList.remove('error');
+		locationError.textContent = '';
+	}
 	
-	const checkbox = document.querySelectorAll('input[type=radio]:checked');
-	const quantityError = quantity.nextElementSibling;
-	if (checkbox) {
-		checkboxError.textContent = 'Vous devez choisir une option';
+	// "Vous devez vérifier que vous acceptez les termes et conditions."
+
+	const checkboxError = document.getElementById('checkboxError');
+	if (!document.querySelector('input[name="checkbox1"]:checked')) {
+		checkboxError.textContent = '"Vous devez vérifier que vous acceptez les termes et conditions."';
 		checkboxError.classList.add('error');
 	} else {
 		checkboxError.classList.remove('error');
 		checkboxError.textContent = '';
 	}
+
+
+
 	// Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
 
-	// Après une validation réussie, inclure un message de confirmation de la soumission réussie pour l'utilisateur (ex. "Merci ! Votre réservation a été reçue.")
+	// Après une validation réussie, inclure un message de confirmation de la soumission réussie pour l'utilisateur 
+	// (ex. "Merci ! Votre réservation a été reçue")
+
+	const bouton = document.getElementById('bouton');
+
+
+
+
 });
 
 // 30/11/21 - Récupérer toutes les données du formulaire et contrôler les champs avec les expressions régulières
 // Les données doivent être saisies correctement :
 
 
+// const checkbox = document.querySelectorAll('input[type=radio]:checked');
+// const checkboxError = quantity.nextElementSibling;
 
-function sameAgeOrOlder(minimumAge, date) {
-	const today = new Date();
-
-	let age = today.getFullYear() - date.getFullYear();
-
-
-	// Same age?
-	if (age === minimumAge) {
-
-		// Same month?
-		if (date.getMonth() === today.getMonth()) {
-
-			// Same date?
-			if (date.getDate() === today.getDate()) {
-
-				// Today is birthday!
-				return true;
-			}
-
-			return today.getDate() > date.getDate();
-		}
-
-		return today.getMonth() > date.getMonth();
-	}
-
-	return age > minimumAge;
-}
+// if (checkbox) {
+// 	checkboxError.textContent = 'Vous devez choisir une option';
+// 	checkboxError.classList.add('error');
+// } else {
+// 	checkboxError.classList.remove('error');
+// 	checkboxError.textContent = '';
+// }
 
 
+// var radios = document.getElementsByTagName('input');
+// var value;
+// for (var i = 0; i < radios.length; i++) {
+//     if (radios[i].type === 'radio' && radios[i].checked) {
+//         // get value, set checked flag or do whatever you need to
+//         value = radios[i].value;       
+//     }
+// }
+// Vous devez avoir au moins 18 ans
 
+// const birthdate = document.getElementById('birthdate');
+// 	const birthdateError = birthdate.nextElementSibling;
+// 	const regExBirthdate = /^([0-9]{4})-((0)[0-9]|(1)[0-2])-([0-2][0-9]|(3)[0-1])$/;
 
+// 	//console.log(new Date(dateDujour) + (birthdate.value));
 
+// 	function sameAgeOrOlder(minimumAge, date) {
+// 		const today = new Date();
 
+// 		let age = today.getFullYear() - date.getFullYear();
 
+// 		// Same age?
+// 		if (age === minimumAge) {
 
+// 			// Same month?
+// 			if (date.getMonth() === today.getMonth()) {
 
+// 				// Same date?
+// 				if (date.getDate() === today.getDate()) {
 
+// 					// Today is birthday!
+// 					return true;
+// 				}
 
+// 				return today.getDate() > date.getDate();
+// 			}
 
-/*
-<html>
-   <head>
-	  <script>
-		 function check(){
-			 var nbr;
-			 nbr = Number(document.getElementById("age").value);
-			 if(nbr < 18)
-			 {
-				alert("Vous n'êtes pas un adulte");
-			 }
-			 else
-			 {
-				alert("Vous êtes un adulte");
-			 }
-		 }
-	  </script>
-   </head>
-   <body>
-	  Entrez votre age: <input id="age">
-	  <button onclick="check()">Vérifier</button>
-   </body>
-</html>
-*/
+// 			return today.getMonth() > date.getMonth();
+// 		}
 
+// 		return age > minimumAge;
+// 	}
 
+// 	// console.log(birthdate.value);
+// 	// console.log(sameAgeOrOlder(18, new Date(birthdate.value)));
+// 	// console.log(!regExBirthdate.test(birthdate.value));
+// 	if (regExBirthdate.test(birthdate.value) && (!sameAgeOrOlder(18, new Date(birthdate.value)))) {
+// 		birthdateError.textContent = 'Vous devez avoir au moins 18 ans !';
+// 		birthdateError.classList.add('error');
 
-
-
-
-
-
-
-
-
-
-
-//const checkboxError = checkbox.nextElementSibling;
-	// const regExCheckbox = // 
-
-	//for (let i = 0; i < location-radio.length; i++) {
-	//	if (location-radio[i].checked) {
-
-	//}//
-
-	// La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
-
-	//const checkbox1 = document.getElementById('checkbox1');
-	//const checkbox1Error = checkbox1.nextElementSibling;
-	// const regExCheckbox1 = //
-	//if (!regExCheckbox1.test(checkbox1.value)) {
-	//checkboxError.textContent = 'Vous devez choisir une option'
-	//checkboxError.classList.add('error');
-	//} else {
-	// checkboxError.classList.remove('error');
-	//}
+// 	} else {
+// 		birthdateError.classList.remove('error');
+// 		birthdateError.textContent = '';
+// 	}
