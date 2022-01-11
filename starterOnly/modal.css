@@ -105,6 +105,7 @@ img {
     display: block;
     margin-top: -15px;
   }
+  
 } 
 
 main {
@@ -479,11 +480,16 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+.confirmation {
+  display: none;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -503,10 +509,11 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    font-size: 2rem;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.9rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -536,4 +543,23 @@ footer {
 @media screen and (max-width:375px) {
   .topnav a.icon {
     margin-top: auto;
+ 
 }
+ .topnav a:hover {
+  background-color: white;
+  color: #ff0000;
+  border-radius: 15px;
+  padding-top: -0.5em;
+}
+}
+
+/* @media screen and (min-width: 375px) {
+  img {
+    padding-right: 1rem;
+    height: 1.5rem;
+    margin-left: 30px;
+    padding-top: 10px;
+    
+}
+}  */
+
