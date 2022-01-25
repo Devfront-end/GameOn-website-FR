@@ -11,13 +11,14 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const modalClose = document.querySelector(".close");
+const modalClose = document.querySelectorAll(".close");
 // launch modal event
 // ecoute du click sur les boutons je m'inscris
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // ecoute du click sur la croix
-modalClose.addEventListener("click", closeModal);
+
+modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // launch modal form (permet d'afficher le formulaire)
 function launchModal() {
@@ -28,16 +29,26 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+const closing = document.querySelector(".closing");
+const reserve = document.getElementById("reserve");
+//const submit = document.getElementById("submit");
+//reserve.style.display = "block";
+  //closing.style.display = "none";
+ 
 // Le formulaire doit être valide quand l'utilisateur clique sur "Submit"
 
 // On récupère l'élément sur lequel on veut détecter le clic
+
 const elt = document.getElementById("bouton");
 // On écoute l'événement click
+
 elt.addEventListener("click", function (event) {
   // On utilise la fonction preventDefault de notre objet event pour empêcher le comportement par défaut de cet élément lors du clic de la souris
   event.preventDefault();
   // console.log(document.getElementById('birthdate').value);
   const confirmation = document.querySelector(".confirmation");
+  
+  
   let valide = true;
   // Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
   const prenom = document.getElementById("first");
@@ -85,7 +96,6 @@ elt.addEventListener("click", function (event) {
   }
 
   // "Vous devez entrer votre date de naissance."
-
   const birthdate = document.getElementById("birthdate");
   const birthdateError = birthdate.nextElementSibling;
   const regExBirthdate = /^([0-9]{4})-((0)[0-9]|(1)[0-2])-([0-2][0-9]|(3)[0-1])$/;
@@ -142,8 +152,58 @@ elt.addEventListener("click", function (event) {
 
   //const bouton = document.getElementById('bouton') {
 
-  confirmation.style.display = valide ? "block" : "none";
-  // masquer la balise (display:none) tout le formulaire
+  confirmation.style.display = valide ? "inline-flex" : "none";
+ 
+  //console.log(reserve);
+  reserve.style.display = valide ? "none" :"block";
+
+  //submit.style.display = valide ? "none" :"block";
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // modal-body.style.display = close ? "block" : "none";
+  // 11/01/22 masquer la balise (display:none) tout le formulaire
+
+
+
+  //closing.style.display = valide ? "block" : "none";
+
+  //closing = document.getElementsByClassName("closing").style.display = none;
+  //closing = document.getElementsByClassName("closing").style.display = block;
+
+  // <div id=identifiant_de_ma_div>Votre contenu est placé ici</div>
+  // En JavaScript :
+
+  //Pour masquer la division :
+  //document.getElementById(identifiant_de_ma_div).style.display = none;
+  //Pour afficher la division :
+  //document.getElementById(identifiant_de_ma_div).style.display = block;
 });
 
 // 30/11/21 - Récupérer toutes les données du formulaire et contrôler les champs avec les expressions régulières
