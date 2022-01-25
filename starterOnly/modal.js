@@ -47,7 +47,7 @@ elt.addEventListener("click", function (event) {
   event.preventDefault();
   // console.log(document.getElementById('birthdate').value);
   const confirmation = document.querySelector(".confirmation");
-  
+  confirmation.style.display = "none";
   
   let valide = true;
   // Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
