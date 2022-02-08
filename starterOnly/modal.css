@@ -160,6 +160,7 @@ main {
   cursor: pointer;
   border: 0;
   justify-content: center;
+  align-items: center;
 }
 
 .footer {
@@ -343,7 +344,7 @@ input[data-error]::after {
 }
 
 .close {
-  position: relative;
+  position: absolute;
   right: 15px;
   top: 15px;
   width: 32px;
@@ -354,7 +355,7 @@ input[data-error]::after {
 
 .close:before,
 .close:after {
-  /*position: absolute;*/
+  position: absolute;
   left: 15px;
   content: " ";
   height: 33px;
@@ -507,7 +508,7 @@ input[data-error]::after {
 
 .btn-signup {
   outline: none;
-  /*text-transform: capitalize;*/
+  text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
@@ -661,8 +662,6 @@ footer {
     position: absolute;
     margin-top: 420px;
   }
-
-
 
   .copyrights {
     color: #fe142f;
