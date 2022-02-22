@@ -24,6 +24,8 @@ body {
 
 .error {
   color: red;
+  font-size: 18px;
+
 }
 
 p {
@@ -142,7 +144,7 @@ main {
 }
 
 .btn-signup::first-letter {
-  font-size: uppercase;
+  font-size: 20px;
 }
 
 .modal-btn:hover {
@@ -218,11 +220,12 @@ main {
 
 .modal-body {
   padding: 15px 8%;
-  margin: 15px auto;
+  margin: 40px auto;
+
 }
 
 label {
-  font-family: var(--font-default);
+
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
@@ -382,6 +385,7 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+
 }
 
 /* custom select styles */
@@ -468,6 +472,10 @@ input[data-error]::after {
   margin-bottom: 10px;
 }
 
+.hero-section > .btn-signup {
+  display: none;
+}
+
 .hero-content {
   padding: 51px 67px;
   grid-column: span 4;
@@ -547,7 +555,7 @@ input[data-error]::after {
 .confirmation {
   margin: auto;
   border-radius: 10px;
-  height: 80vh;
+  height: 70vh;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -568,7 +576,7 @@ input[data-error]::after {
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: -118px 20px;
+  /*margin: 54px 20px;*/
 }
 
 @media screen and (max-width: 800px) {
@@ -595,6 +603,7 @@ footer {
   .hero-section {
     display: block;
     box-shadow: unset;
+    min-height:10px;
   }
 
   .hero-content {
@@ -612,10 +621,21 @@ footer {
     display: block;
   }
 
+  .hero-section  .btn-signup {
+  display: none;
+
+}
+
   .content {
     margin: 21% auto;
-   
+
   }
+
+
+  .modal-body {
+    padding: 1px 8%;
+    margin: 41px auto;
+}
 
   .btn-signup {
     margin-left: 3em;
@@ -640,8 +660,8 @@ footer {
 
   .hero-section>.btn-signup {
     display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
+    margin-top: 30px;
+    padding: 7px 35px;
   }
 
   .copyrights {
@@ -655,12 +675,11 @@ footer {
     display: flex;
     border-radius: 7px;
     font-size: 1rem;
-    padding: 9px 29px;
+    padding: 4px 29px;
     color: #fff;
     cursor: pointer;
     border: 0;
     position: absolute;
-    margin-top: 420px;
   }
 
   .copyrights {
@@ -691,7 +710,7 @@ footer {
       background-color: white;
       color: #ff0000;
       border-radius: 15px;
-      padding-top: -0.5em;
+      padding-top: 0.5em;
     }
   }
 }

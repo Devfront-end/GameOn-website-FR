@@ -13,6 +13,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelectorAll(".close");
+const modalBtnClose = document.querySelector(".btn-closed");
 // launch modal event
 // ecoute du click sur le bouton je m'inscris
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -20,21 +21,34 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // ecoute du click sur la croix
 
 modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
+modalBtnClose.addEventListener("click", closeModal);
+
 
 // launch modal form (permet d'afficher le formulaire)
 function launchModal() {
   modalbg.style.display = "block";
 }
 
+
+
 // function pour fermer le formulaire
 function closeModal() {
-  modalbg.style.display = "none";
+ 
+  // modalbg.style.display = "none";
+  const closing = document.querySelector(".closing");
+  const reserve = document.getElementById("reserve");
+  const confirmation = document.querySelector(".confirmation");
+  confirmation.style.display = "none";
+  closing.style.display = "none";
 }
 const closing = document.querySelector(".closing");
 const reserve = document.getElementById("reserve");
 const confirmation = document.querySelector(".confirmation");
 confirmation.style.display = "none";
 closing.style.display = "none";
+
+
+
 //const submit = document.getElementById("submit");
 //reserve.style.display = "block";
 //closing.style.display = "none";
@@ -159,14 +173,17 @@ elt.addEventListener("click", function (event) {
   confirmation.style.display = valide ? "inline-flex" : "none";
   closing.style.display = valide ? "block" : "none";
 
+ 
+
+
+
+
   //console.log(reserve);
   reserve.style.display = valide ? "none" : "block";
 
 
-  
 
-  //submit.style.display = valide ? "none" :"block";
 });
 
-const closed = document.getElementById("closed");
+
 
