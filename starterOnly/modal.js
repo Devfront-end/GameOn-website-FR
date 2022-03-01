@@ -7,7 +7,6 @@ function editNav() {
   }
 }
 
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -16,38 +15,34 @@ const modalClose = document.querySelectorAll(".close");
 const modalBtnClose = document.querySelector(".btn-closed");
 // launch modal event
 // ecoute du click sur le bouton je m'inscris
+
+
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
 // ecoute du click sur la croix
-
 modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 modalBtnClose.addEventListener("click", closeModal);
-
-
+// La méthode addEventListener() de EventTarget attache une fonction à appeler chaque fois que l'évènement spécifié est envoyé à la cible.
 // launch modal form (permet d'afficher le formulaire)
 function launchModal() {
   modalbg.style.display = "block";
-}
-
-
-
-// function pour fermer le formulaire
-function closeModal() {
- 
-  // modalbg.style.display = "none";
   const closing = document.querySelector(".closing");
-  const reserve = document.getElementById("reserve");
   const confirmation = document.querySelector(".confirmation");
   confirmation.style.display = "none";
   closing.style.display = "none";
+}
+
+// function pour fermer le formulaire
+function closeModal() {
+  const reserve = document.getElementById("reserve");
+  modalbg.style.display = "none";
+  reserve.style.display = "block";
+  reserve.reset();
 }
 const closing = document.querySelector(".closing");
 const reserve = document.getElementById("reserve");
 const confirmation = document.querySelector(".confirmation");
 confirmation.style.display = "none";
 closing.style.display = "none";
-
-
 
 //const submit = document.getElementById("submit");
 //reserve.style.display = "block";
@@ -62,11 +57,15 @@ const elt = document.getElementById("bouton");
 // On écoute l'événement click
 elt.addEventListener("click", function (event) {
   // On utilise la fonction preventDefault de notre objet event pour empêcher le comportement par défaut de cet élément lors du clic de la souris
-  event.preventDefault(); 
+  //La méthode preventDefault(), rattachée à l'interface Event, 
+  //indique à l'agent utilisateur que si l'évènement n'est pas explicitement géré, 
+  //l'action par défaut ne devrait pas être exécutée comme elle l'est normalement.
+
+  event.preventDefault();
   // console.log(document.getElementById('birthdate').value);
- const confirmation = document.querySelector(".confirmation");
- confirmation.style.display = "none";
-   
+  const confirmation = document.querySelector(".confirmation");
+  confirmation.style.display = "none";
+
   let valide = true;
   // Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
   const prenom = document.getElementById("first");
@@ -172,18 +171,7 @@ elt.addEventListener("click", function (event) {
 
   confirmation.style.display = valide ? "inline-flex" : "none";
   closing.style.display = valide ? "block" : "none";
-
- 
-
-
-
-
   //console.log(reserve);
   reserve.style.display = valide ? "none" : "block";
 
-
-
 });
-
-
-
